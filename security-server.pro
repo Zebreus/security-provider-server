@@ -22,7 +22,8 @@ INCLUDEPATH += $$PWD/libs
 DEPENDPATH += $$PWD
 
 SOURCES += \
-        src/main.cpp
+        src/main.cpp \
+        src/server.cpp
 
 LIBS += -L/usr/lib -lssl -lcrypto
 
@@ -30,3 +31,6 @@ LIBS += -L/usr/lib -lssl -lcrypto
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+HEADERS += \
+    src/server.h
