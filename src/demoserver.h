@@ -5,12 +5,12 @@
 #include <QString>
 #include <jwt-cpp/jwt.h>
 
-class Server : public QObject
+class DemoServer : public QObject
 {
     Q_OBJECT
     QString providerPublicKey;
 public:
-    explicit Server(QString providerPublicKey, QObject *parent = nullptr);
+    explicit DemoServer(QString providerPublicKey, QObject *parent = nullptr);
 
 signals:
 

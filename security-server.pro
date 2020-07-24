@@ -22,8 +22,8 @@ INCLUDEPATH += $$PWD/libs
 DEPENDPATH += $$PWD
 
 SOURCES += \
-        src/main.cpp \
-        src/server.cpp
+        src/demoserver.cpp \
+        src/main.cpp
 
 LIBS += -L/usr/lib -lssl -lcrypto
 
@@ -33,4 +33,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    src/server.h
+    src/demoserver.h
