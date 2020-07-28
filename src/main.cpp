@@ -11,8 +11,14 @@ QString publicKey;
 
 void startServerWithKey(const QString& key){
     publicKey = key;
+    qDebug() << "Got Public key from securityProvider";
+    qDebug() << "Starting server";
     server.setConstructorArguments(publicKey);
     server.startListening();
+}
+
+void providerError(){
+    qDebug() << "Provider error";
 }
 
 int main(int argc, char *argv[])
@@ -21,6 +27,7 @@ int main(int argc, char *argv[])
 
     securityprovider::Client client;
     QObject::connect(&client, &securityprovider::Client::gotPublicKey, startServerWithKey);
+    QObject::connect(&client, &securityprovider::Client::error, providerError);
     client.open(QUrl("ws://localhost:9092"));
     client.getPublicKey();
 

@@ -4,7 +4,12 @@
 DemoServer::DemoServer(QString providerPublicKey, QObject *parent) :
     QObject(parent), providerPublicKey(providerPublicKey)
 {
+    qDebug() << "Connected";
+}
 
+DemoServer::~DemoServer()
+{
+    qDebug() << "Disconnected";
 }
 
 bool DemoServer::login(QString jsonWebToken)
@@ -20,8 +25,11 @@ bool DemoServer::login(QString jsonWebToken)
         verifier.verify(decodedToken);
 
         authorized = true;
+        qDebug() << "User " << decodedToken.get_subject() << " logged in with valid token";
         return true;
     }catch(std::runtime_error& e){
+        authorized = false;
+        qDebug() << "Invalid token";
         return false;
     }
 }

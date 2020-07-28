@@ -13,6 +13,7 @@ class DemoServer : public QObject
     bool authorized;
 public:
     explicit DemoServer(QString providerPublicKey, QObject *parent = nullptr);
+    ~DemoServer();
 
 signals:
 
